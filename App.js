@@ -1,11 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View, AppRegistry, StatusBar} from 'react-native';
-import ('dotenv').config();
+
+import Icon from 'react-native-vector-icons/Ionicons'
+import {fetchWeather} from './weatherApiAccess'
 
 export default class App extends React.Component {
 
     componentDidMount() /*when app renders run function */ {
         this.getLocation() /* "this" refers to the app class */
+        fetchWeather(51.0486, 114.0708)
     }
 
     getLocation () {
@@ -26,17 +29,13 @@ export default class App extends React.Component {
                 </View>
 
                 <View style={styles.body}>
-                    <Text style={styles.title}>Hello World!</Text>
-                    <Text style={styles.subtitle}>Let's make it rain</Text>
-
+                    <Text style={styles.title}>My Fucking Weather App</Text>
                 </View>
 
             </View>
         );
     }
 }
-
-import Icon from 'react-native-vector-icons/Ionicons'
 
 AppRegistry.registerComponent('WeatherApp', () => App);
 
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     title: {
-        fontSize: 78,
+        fontSize: 48,
         color: 'white',
         marginBottom: 5,
     },
