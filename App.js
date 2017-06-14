@@ -7,8 +7,8 @@ import {fetchWeather} from './weatherApiAccess'
 export default class App extends React.Component {
 
     componentDidMount() /*when app renders run function */ {
-        this.getLocation() /* "this" refers to the app class */
-        fetchWeather('calgary')
+        this.getLocation();/* "this" refers to the app class */
+        fetchWeather('calgary').then(res => console.log(res))
     }
 
     getLocation () {
@@ -29,7 +29,7 @@ export default class App extends React.Component {
                 </View>
 
                 <View style={styles.body}>
-                    <Text style={styles.title}>My Fucking Weather App</Text>
+                    <Text style={styles.title}>Weather App</Text>
                 </View>
 
             </View>
@@ -42,7 +42,7 @@ AppRegistry.registerComponent('WeatherApp', () => App);
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'red',
+        backgroundColor: '#FFD017',
 
     },
 
