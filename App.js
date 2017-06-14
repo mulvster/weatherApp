@@ -6,6 +6,7 @@ import {fetchWeather} from './weatherApiAccess'
 import Highlight from 'react-native-highlight-words'
 
 const iconNames = {
+    Default: 'md-time',
     Clear: 'md-sunny',
     Rainy: 'md-rainy',
     Thunderstorm: 'md-thunderstorm' ,
@@ -15,6 +16,14 @@ const iconNames = {
 }
 
 const phrases = {
+    Default: {
+        title: 'Fetching the weather for you' ,
+        subtitle: 'Patience please',
+        highlight: 'weather',
+        color: "#636363",
+        backgroundColor: "#9C9C9C"
+    },
+
     Clear: {
         title: 'Not a cloud in the sky' ,
         subtitle: 'Go outside and play!',
@@ -66,7 +75,7 @@ export default class App extends React.Component {
     componentWillMount() {
         this.state = {
            temp: 0,
-            weather: 'Clear'
+            weather: 'Default'
         }
     }
 
