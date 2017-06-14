@@ -9,12 +9,8 @@ export const fetchWeather = () => {
     return new Promise(function(resolve, reject) {
 
         fetch(url).then(res => {
-            // console.log(res);
-            // console.log(url);
 
             res.json().then(function(data) {
-                console.log('test',data.main.temp);
-
                 const weatherObj = {
                     temp: data.main.temp,
                     weather: data.weather[0].main

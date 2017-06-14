@@ -1,38 +1,113 @@
-import React from 'react';
-import {StyleSheet, Text, View, AppRegistry, StatusBar} from 'react-native';
+import React from 'react'
+import {StyleSheet, Text, View, AppRegistry, StatusBar} from 'react-native'
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import {fetchWeather} from './weatherApiAccess'
+import Highlight from 'react-native-highlight-words'
+
+const iconNames = {
+    Clear: 'md-sunny',
+    Rainy: 'md-rainy',
+    Thunderstorm: 'md-thunderstorm' ,
+    Clouds: 'md-cloudy' ,
+    Snow: 'md-snow' ,
+    Drizzle: 'md-umbrella' ,
+}
+
+const phrases = {
+    Clear: {
+        title: 'Not a cloud in the sky' ,
+        subtitle: 'Go outside and play!',
+        highlight: 'Go outside',
+        color: "#E32500",
+        backgroundColor: "#FFD017"
+    } ,
+    Rainy: {
+        title: 'Its raining!' ,
+        subtitle: 'Grab an umbrella',
+        highlight: 'umbrella',
+        color: "#004A96",
+        backgroundColor: "#2F343A"
+    },
+    Thunderstorm: {
+        title: 'Thunder and lightening!' ,
+        subtitle: 'Cover yourself',
+        highlight: 'Cover',
+        color: "#0044FF",
+        backgroundColor: "#939393"
+    }  ,
+    Clouds: {
+        title: 'Cloudy' ,
+        subtitle: "Its kinda nice out",
+        highlight: 'kinda',
+        color: "#FBFF46",
+        backgroundColor: "#020202"
+    }  ,
+    Snow: {
+        title: 'Snowing' ,
+        subtitle: 'Skiing?',
+        highlight: 'Skiing?',
+        color: "#0214DC",
+        backgroundColor: "#15A678"
+    }  ,
+    Drizzle: {
+        title: 'Light Rain',
+        subtitle: "At least you won't get soaked",
+        highlight: "won't get soaked",
+        color: "#B3F6E4",
+        backgroundColor: "#1FBB68"
+    }
+}
 
 export default class App extends React.Component {
 
+    componentWillMount() {
+        this.state = {
+           temp: 0,
+            weather: 'Clear'
+        }
+    }
+
     componentDidMount() /*when app renders run function */ {
         this.getLocation();/* "this" refers to the app class */
-        fetchWeather('calgary').then(res => console.log(res))
+
     }
 
     getLocation () {
-        navigator.geolocation.getCurrentPosition (
-            (posData) => console.log(posData), /* do something with the data */
+        navigator.geolocation.getCurrentPosition ( /* get location coordinates which calls the fetch function which passes lat/long in there */
+            (posData) => fetchWeather(posData.coords.lattitude, posData.coords.longitude) /* do something with the data */
+            .then(res => this.setState({ /* returns a promise that gets the current temp and weather */
+                temp: Math.round(11),
+                weather: res.weather,
+            })),
             (error) => alert(error), /* do something if there's an error */
             {timeout: 10000}
         )
     }
 
     render() {
+        console.log('component is rendering');
         return (
-            <View style={styles.container}>
+
+            <View style={[styles.container,{backgroundColor: phrases[this.state.weather].backgroundColor}]}>
                 <StatusBar hidden={true}/>
                 <View style={styles.header}>
-                    <Icon name={'ios-sunny'} size={85} color={'white'}/>
-                    <Text style={styles.temp}>24°</Text>
+                    <Icon name={iconNames[this.state.weather]} size={85} color={'white'}/>
+                    <Text style={styles.temp}>{this.state.temp}°</Text>
                 </View>
 
                 <View style={styles.body}>
-                    <Text style={styles.title}>Weather App</Text>
-                </View>
+                    <Text style={styles.title}>{phrases[this.state.weather].title}</Text>
 
+                    <Highlight
+                        style ={styles.title}
+                        highlightStyle={{color: phrases[this.state.weather].color}}
+                        searchWords={[phrases[this.state.weather].highlight]}
+                        textToHighlight={phrases[this.state.weather].subtitle}
+                    />
+                </View>
             </View>
+
         );
     }
 }
@@ -70,7 +145,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     subtitle: {
-        fontSize: 16,
+        fontSize: 85,
         color: 'white',
     },
 });
