@@ -8,7 +8,7 @@ export default class App extends React.Component {
 
     componentDidMount() /*when app renders run function */ {
         this.getLocation() /* "this" refers to the app class */
-        fetchWeather(51.0486, 114.0708)
+        fetchWeather('calgary')
     }
 
     getLocation () {
