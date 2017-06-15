@@ -47,7 +47,7 @@ const phrases = {
     }  ,
     Clouds: {
         title: 'Cloudy' ,
-        subtitle: "Its kinda nice out",
+        subtitle: "But it's kinda nice out",
         highlight: 'kinda',
         color: "#FBFF46",
         backgroundColor: "#020202"
@@ -150,13 +150,15 @@ const styles = StyleSheet.create({
         flex: 5,
         margin: 10,
     },
+
     title: {
         fontSize: 48,
         color: 'white',
         marginBottom: 5,
     },
+
     subtitle: {
-        fontSize: 85,
+        fontSize: 28,
         color: 'white',
     },
 });
