@@ -24,6 +24,7 @@
     "react": "16.0.0-alpha.6",
     "react-native": "^0.44.0",
     "react-native-highlight-words": "^1.0.0",
+    "react-native-modal": "^2.4.0",
     "react-native-vector-icons": "^4.2.0"
   }
 }
