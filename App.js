@@ -88,7 +88,7 @@ export default class App extends React.Component {
         navigator.geolocation.getCurrentPosition ( /* get location coordinates which calls the fetch function which passes lat/long in there */
             (posData) => fetchWeather(posData.coords.lattitude, posData.coords.longitude) /* do something with the data */
             .then(res => this.setState({ /* returns a promise that gets the current temp and weather */
-                temp: res.temp,
+                temp: Math.round(res.temp),
                 weather: res.weather,
             })),
             (error) => alert(error), /* do something if there's an error */
