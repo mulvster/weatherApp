@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, Text, View, AppRegistry, StatusBar} from 'react-native'
+import {StyleSheet, Text, View, AppRegistry, StatusBar, TouchableOpacity} from 'react-native'
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import {fetchWeather} from './weatherApiAccess'
@@ -107,7 +107,10 @@ export default class App extends React.Component {
         console.log('component is rendering');
         return (
 
+
+
             <View style={[styles.container, {backgroundColor: phrases[this.state.weather].backgroundColor}]}>
+
                 <StatusBar hidden={true}/>
                 <View style={styles.header}>
                     <Icon name={iconNames[this.state.weather]} size={85} color={'white'}/>
@@ -123,6 +126,8 @@ export default class App extends React.Component {
                         searchWords={[phrases[this.state.weather].highlight]}
                         textToHighlight={phrases[this.state.weather].subtitle}
                     />
+
+                    <ModalTester/>
                 </View>
             </View>
         );

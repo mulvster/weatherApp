@@ -1,48 +1,64 @@
-import React from 'react'
-import { Text, TouchableOpacity, View, Modal} from 'react-native'
+import React, { Component } from 'react';
+
+import {
+    Modal,
+    Text,
+    TouchableHighlight,
+    View,
+    StyleSheet
+} from 'react-native'
 
 export class ModalTester extends React.Component {
+
     state = {
-        isModalVisible: false
+        modalVisible: false,
     }
 
-    _showModal = () => this.setState({ isModalVisible: true })
+    toggleModal(visible) {
+        this.setState({ modalVisible: visible });
+    }
 
-    _hideModal = () => this.setState({ isModalVisible: false })
-
-    render () {
+    render() {
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <TouchableOpacity onPress={() => this.setState({open: true})}>
-                    <Text>Open modal</Text>
-                </TouchableOpacity>
-                <Modal
-                    offset={this.state.offset}
-                    open={this.state.open}
-                    modalDidOpen={() => console.log('modal did open')}
-                    modalDidClose={() => this.setState({open: false})}
-                    style={{alignItems: 'center'}}>
-                    <View>
-                        <Text style={{fontSize: 20, marginBottom: 10}}>Hello world!</Text>
-                        <TouchableOpacity
-                            style={{margin: 5}}
-                            onPress={() => this.setState({offset: -100})}>
-                            <Text>Move modal up</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={{margin: 5}}
-                            onPress={() => this.setState({offset: 0})}>
-                            <Text>Reset modal position</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={{margin: 5}}
-                            onPress={() => this.setState({open: false})}>
-                            <Text>Close modal</Text>
-                        </TouchableOpacity>
+            <View style = {styles.container}>
+
+                <Modal animationType = {"slide"} transparent = {false}
+                       visible = {this.state.modalVisible}
+                       onRequestClose = {() => { console.log("Modal has been closed.") } }>
+                    <View style = {styles.modal}>
+                        <Text style = {styles.text}>Modal is open!</Text>
+
+                        <TouchableHighlight onPress={() => {this.toggleModal(!this.state.modalVisible)}}>
+                            <Text style = {styles.text}>Close Modal</Text>
+                        </TouchableHighlight>
+
                     </View>
                 </Modal>
+
+                <TouchableHighlight onPress = {() => {this.toggleModal(true)}}>
+                    <Text style = {styles.text}>Open Modal</Text>
+                </TouchableHighlight>
+
             </View>
         )
     }
-
 }
+const styles = StyleSheet.create ({
+    container: {
+        alignItems: 'center',
+        backgroundColor: '#ede3f2',
+        padding: 100
+    },
+
+    modal: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: '#f7021a',
+        padding: 100
+    },
+
+    text: {
+        color: '#3f2949',
+        marginTop: 10
+    }
+})
