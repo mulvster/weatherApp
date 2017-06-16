@@ -1,12 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {StyleSheet, Text, View, Modal, TouchableHighlight, TextInput } from 'react-native'
 
-import {
-    Modal,
-    Text,
-    TouchableHighlight,
-    View,
-    StyleSheet
-} from 'react-native'
 
 export class ModalTester extends React.Component {
 
@@ -24,20 +18,28 @@ export class ModalTester extends React.Component {
 
                 <Modal animationType = {"slide"} transparent = {false}
                        visible = {this.state.modalVisible}
-                       onRequestClose = {() => { console.log("Modal has been closed.") } }>
+                       onRequestClose = {() => { console.log("Modal has closed.") } }>
                     <View style = {styles.modal}>
-                        <Text style = {styles.text}>Modal is open!</Text>
 
                         <TouchableHighlight onPress={() => {this.toggleModal(!this.state.modalVisible)}}>
-                            <Text style = {styles.text}>Close Modal</Text>
+                            <Text style = {styles.text}>Close</Text>
                         </TouchableHighlight>
+
+                        <TextInput style={styles.input}
+                                   onChangeText={this.onChangeText}
+                                   onSubmitEditing={this.getLocation}
+                                   clearButtonMode={"always"}
+                                   clearTextOnFocus={true}
+                                   enablesReturnKeyAutomatically={true}
+                                   returnKeyType={"search"}/>
 
                     </View>
                 </Modal>
 
                 <TouchableHighlight onPress = {() => {this.toggleModal(true)}}>
-                    <Text style = {styles.text}>Open Modal</Text>
+                    <Text style = {styles.text}>Choose City</Text>
                 </TouchableHighlight>
+
 
             </View>
         )
@@ -46,19 +48,29 @@ export class ModalTester extends React.Component {
 const styles = StyleSheet.create ({
     container: {
         alignItems: 'center',
-        backgroundColor: '#ede3f2',
+        backgroundColor: 'red',
         padding: 100
     },
 
     modal: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#f7021a',
+        backgroundColor: 'red',
         padding: 100
     },
 
+    input: {
+        borderWidth: 1,
+        borderColor: "white",
+        height: 40,
+        marginVertical: 20,
+        marginHorizontal: 20,
+        paddingHorizontal: 10,
+        borderRadius: 5
+    },
+
     text: {
-        color: '#3f2949',
+        color: 'black',
         marginTop: 10
     }
 })

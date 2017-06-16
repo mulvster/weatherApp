@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, Text, View, AppRegistry, StatusBar, TouchableOpacity} from 'react-native'
+import {StyleSheet, Text, View, AppRegistry, StatusBar, Animated, TextInput} from 'react-native'
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import {fetchWeather} from './weatherApiAccess'
@@ -80,7 +80,9 @@ export default class App extends React.Component {
     componentWillMount() {
         this.state = {
             temp: 0,
-            weather: 'Default'
+            weather: 'Default',
+            name: 'Calgary',
+            searchedCity: 'Calgary',
         }
     }
 
@@ -91,12 +93,15 @@ export default class App extends React.Component {
     }
 
     getLocation() {
+
+        // let cityList = [0];
         navigator.geolocation.getCurrentPosition(/* get location coordinates which calls the fetch function which passes lat/long in there */
-            (posData) => fetchWeather(posData.coords.lattitude, posData.coords.longitude) /* do something with the data */
+            (posData) => fetchWeather(this.state.searchedCity) /* do something with the data */
                 .then(res => this.setState({
                     /* returns a promise that gets the current temp and weather */
                     temp: Math.round(res.temp),
-                    weather: res.weather,
+                    name: res.name,
+                    weather: res.weather
                 })),
             (error) => alert(error), /* do something if there's an error */
             {timeout: 10000}
@@ -106,8 +111,6 @@ export default class App extends React.Component {
     render() {
         console.log('component is rendering');
         return (
-
-
 
             <View style={[styles.container, {backgroundColor: phrases[this.state.weather].backgroundColor}]}>
 
@@ -127,6 +130,26 @@ export default class App extends React.Component {
                         textToHighlight={phrases[this.state.weather].subtitle}
                     />
 
+                    <Animated.View style={{
+                        flex: 1,
+                        alignItems: "stretch",
+                        justifyContent: "center"}}>
+                        <View>
+                            <View style={[styles.animatedContainer]}>
+                                <Text style={styles.icon}>
+                                    {this.state.icon}
+                                </Text>
+
+                                <Text style={styles.location}>
+                                    {this.state.name}
+                                </Text>
+                                <Text style={styles.weatherType}>
+                                    {this.state.weatherType}
+                                </Text>
+                            </View>
+                        </View>
+                    </Animated.View>
+
                     <ModalTester/>
                 </View>
             </View>
@@ -135,7 +158,6 @@ export default class App extends React.Component {
 
 
 }
-
 AppRegistry.registerComponent('WeatherApp', () => App);
 
 const styles = StyleSheet.create({
@@ -157,6 +179,12 @@ const styles = StyleSheet.create({
         color: 'white',
     },
 
+    name: {
+        fontSize: 45,
+        color: 'white',
+    },
+
+
     body: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -168,6 +196,16 @@ const styles = StyleSheet.create({
         fontSize: 48,
         color: 'white',
         marginBottom: 5,
+    },
+
+    weatherType: {
+        fontSize: 34,
+        fontWeight: "500"
+    },
+
+    animatedContainer: {
+        alignItems: "center",
+        justifyContent: "center"
     },
 
     subtitle: {
