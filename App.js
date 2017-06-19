@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, Text, View, AppRegistry, StatusBar, Animated, TextInput} from 'react-native'
+import {StyleSheet, Text, View, AppRegistry, StatusBar, Animated} from 'react-native'
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import {fetchWeather} from './weatherApiAccess'
@@ -77,35 +77,32 @@ const phrases = {
 
 export default class App extends React.Component {
 
+    constructor(props){
+        super(props)      //this allows for me to be able to pass props.//
+
+        this.updateLocation = this.updateLocation.bind(this);
+
+        console.log(props)
+    }
+
     componentWillMount() {
         this.state = {
             temp: 0,
             weather: 'Default',
             name: 'Calgary',
-            searchedCity: 'Calgary',
+            searchedCity: 'Vancouver',
         }
+        this.updateLocation(this.state.searchedCity)
     }
 
-    componentDidMount() /*when app renders run function */ {
-        this.getLocation();
-        /* "this" refers to the app class */
+    updateLocation (searchQuery) {
 
-    }
-
-    getLocation() {
-
-        // let cityList = [0];
-        navigator.geolocation.getCurrentPosition(/* get location coordinates which calls the fetch function which passes lat/long in there */
-            (posData) => fetchWeather(this.state.searchedCity) /* do something with the data */
-                .then(res => this.setState({
-                    /* returns a promise that gets the current temp and weather */
-                    temp: Math.round(res.temp),
-                    name: res.name,
-                    weather: res.weather
-                })),
-            (error) => alert(error), /* do something if there's an error */
-            {timeout: 10000}
-        )
+        fetchWeather(searchQuery).then(res => this.setState({
+                            /* returns a promise that gets the current temp and weather */
+            temp: Math.round(res.temp),
+            name: res.name,
+            weather: res.weather
+        }))
     }
 
     render() {
@@ -150,7 +147,10 @@ export default class App extends React.Component {
                         </View>
                     </Animated.View>
 
-                    <ModalTester/>
+
+                    <ModalTester updateLocation={this.updateLocation}/>
+
+
                 </View>
             </View>
         );

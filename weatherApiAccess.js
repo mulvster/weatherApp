@@ -1,16 +1,16 @@
-const API_KEY = '91dab84b0911d8cd401cebb7bba94d47';
-const city = 'Vancouver';
-const rootUrl =`http://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}&q=${city}&units=metric`;
-const url = rootUrl;
 
 
-export const fetchWeather = () => {
+
+export const fetchWeather = (city) => {
+    const API_KEY = '91dab84b0911d8cd401cebb7bba94d47';
+    const url =`http://api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}&q=${city}&units=metric`;
+
     return new Promise(function(resolve, reject) {
 
         fetch(url).then(res => {
 
             res.json().then(function(data) {
-                console.log(url)
+                console.log(url,data)
                 const weatherObj = {
                     temp: data.main.temp,
                     weather: data.weather[0].main
@@ -19,7 +19,9 @@ export const fetchWeather = () => {
             });
         }).catch(function(error) {
             reject(error.message)
-            });
+        });
 
     });
 }
+
+
