@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="96d00196-3219-4d94-b4dd-9142d4fab83b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ModalTester.js" afterPath="$PROJECT_DIR$/ModalTester.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weatherApiAccess.js" afterPath="$PROJECT_DIR$/weatherApiAccess.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,21 +18,23 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="weatherApiAccess.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/weatherApiAccess.js">
+      <file leaf-file-name="ModalTester.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ModalTester.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="228">
+              <caret line="70" column="12" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="94" column="51" lean-forward="false" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
+            <state relative-caret-position="-572">
+              <caret line="100" column="34" lean-forward="false" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -41,14 +42,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModalTester.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ModalTester.js">
+      <file leaf-file-name="weatherApiAccess.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/weatherApiAccess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="902">
-              <caret line="77" column="30" lean-forward="true" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,6 +75,7 @@
       <find>ModalTester</find>
       <find>getlo</find>
       <find>{props: hello}</find>
+      <find>back</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -92,8 +92,8 @@
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/cityPickerModal.js" />
         <option value="$PROJECT_DIR$/ModalTester.js" />
-        <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/weatherApiAccess.js" />
+        <option value="$PROJECT_DIR$/App.js" />
       </list>
     </option>
   </component>
@@ -276,12 +276,12 @@
       <updated>1497373170812</updated>
       <workItem from="1497373173012" duration="13049000" />
       <workItem from="1497453089752" duration="20317000" />
-      <workItem from="1497543045615" duration="21005000" />
+      <workItem from="1497543045615" duration="22687000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54371000" />
+    <option name="totallyTimeSpent" value="56053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="828" extended-state="0" />
@@ -436,20 +436,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ModalTester.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="77" column="30" lean-forward="true" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+        <state relative-caret-position="228">
+          <caret line="70" column="12" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="12" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="94" column="51" lean-forward="false" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -457,8 +447,18 @@
     <entry file="file://$PROJECT_DIR$/weatherApiAccess.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-572">
+          <caret line="100" column="34" lean-forward="false" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

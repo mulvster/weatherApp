@@ -10,6 +10,7 @@ import {ModalTester} from './ModalTester'
 const iconNames = {
     Default: 'md-time',
     Clear: 'md-sunny',
+    Rain: 'md-rainy',
     Rainy: 'md-rainy',
     Thunderstorm: 'md-thunderstorm',
     Clouds: 'md-cloudy',
@@ -32,6 +33,13 @@ const phrases = {
         highlight: 'Go outside',
         color: "#E32500",
         backgroundColor: "#FFD017"
+    },
+    Rain: {
+        title: 'Its raining!',
+        subtitle: 'Grab an umbrella',
+        highlight: 'umbrella',
+        color: "#004A96",
+        backgroundColor: "#2F343A"
     },
 
     Rainy: {
@@ -90,19 +98,21 @@ export default class App extends React.Component {
             temp: 0,
             weather: 'Default',
             name: 'Calgary',
-            searchedCity: 'Vancouver',
+            searchedCity: 'Calgary',
         }
         this.updateLocation(this.state.searchedCity)
     }
 
     updateLocation (searchQuery) {
+        fetchWeather(searchQuery).then(res => {
+            console.log(res)
+            this.setState({
+                temp: Math.round(res.temp),
+                weather: res.weather,
+                name: res.name
+            })
+        })
 
-        fetchWeather(searchQuery).then(res => this.setState({
-                            /* returns a promise that gets the current temp and weather */
-            temp: Math.round(res.temp),
-            name: res.name,
-            weather: res.weather
-        }))
     }
 
     render() {
